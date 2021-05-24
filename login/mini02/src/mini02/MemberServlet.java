@@ -102,11 +102,6 @@ public class MemberServlet extends HttpServlet{
 			}
 			out.print("</table> </body> </html>");
 		}
-		/*
-		out.print("<a href='/pro07/memberForm2.html'>���� ����ϱ� </a><br>");
-		if(igrade == 0) {
-			out.print("<a href='/pro07/member3?command=revMember&id='>�� ���� �����ϱ� </a>");
-		}*/
 		
 	}
 	

@@ -53,7 +53,7 @@ private String ut = "utf-8";
 					session.setAttribute("name", vo.getName());
 					session.setAttribute("email", vo.getEmail());
 					session.setAttribute("grade", vo.getGrade());
-					response.sendRedirect("/mini02/MemInfo.jsp");//������ �̵�
+					response.sendRedirect("/mini02/MemInfo.jsp");
 				}else {
 					out.print("pw Ʋ��<br>");
 					out.print("<a href='/mini02/login.jsp'>"

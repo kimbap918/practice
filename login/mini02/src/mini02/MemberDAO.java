@@ -21,24 +21,30 @@ public class MemberDAO {
 	public MemberDAO() {
 		try {
 			Context ctx = new InitialContext();
+            //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
 			Context evnCtx = (Context)ctx.lookup("java:/comp/env");
-			dataFactory = (DataSource)evnCtx.lookup("jdbc/oracle");
+            //envCtx의 lookup메서드를 이용해서 "jdbc/orcl"에 해당하는 객체를 찾아서 dataFactory에 삽입
+			dataFactory = (DataSource)evnCtx.lookup("jdbc/mysql");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+	 /*
+     Context context = new InitialContext();
+     DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
+     Connection con = dataSource.getConnection(); 
+     */
 	public MemberVO getMember(String ID) {
 		MemberVO vo = new MemberVO();
 		ResultSet rs = null;
 		try {
 			con = dataFactory.getConnection();
-			String query = "select * FROM t_member WHERE ID=?";
+			String query = "select * FROM t_member WHERE id=?";
 			pst = con.prepareStatement(query);
 			pst.setString(1, ID);
 			rs = pst.executeQuery();
 			if(rs.next()) {
-				vo.setID(rs.getString("ID"));
+				vo.setID(rs.getString("id"));
 				vo.setPW(rs.getString("pwd"));
 				vo.setName(rs.getString("name"));
 				vo.setEmail(rs.getString("email"));
