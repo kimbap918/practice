@@ -55,15 +55,15 @@ public class MemberServlet extends HttpServlet{
 			String id = request.getParameter("id");
 			MemberVO vo = getVO(request);
 			
-			dao.revMember(vo); //id pw name email
+			dao.revMember(vo); //id PWD name email
 			
 			vo = dao.getMember(id);
 			
 			session.setAttribute("id", vo.getID());
-			session.setAttribute("pw", vo.getPW());
+			session.setAttribute("pwd", vo.getPWD());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("grade", vo.getGrade());
+			session.setAttribute("custRank", vo.getCustRank());
 			response.sendRedirect("/mini02/login.jsp");//������ �̵�
 		}
 		
@@ -79,11 +79,11 @@ public class MemberServlet extends HttpServlet{
 			for(int i = 0; i < list.size(); i++){
 				MemberVO memberVO = (MemberVO) list.get(i);
 				String id = memberVO.getID();
-				String pw = memberVO.getPW();
+				String pwd = memberVO.getPWD();
 				String name = memberVO.getName();
 				String email = memberVO.getEmail();
 				Date joinDate = memberVO.getJoinDate();
-				String grade = memberVO.getGrade();
+				String custRank = memberVO.getCustRank();
 				
 				session.setAttribute("id", memberVO.getID());
 				session.setAttribute("name", memberVO.getName());
@@ -91,11 +91,11 @@ public class MemberServlet extends HttpServlet{
 				out.print("<form action='MemInfo.jsp' method='post'>"
 						+ "<input type='hidden' name='command' value='change'>"
 						+ "<td> <input type='text' name ='id' value='" + id + "' readonly='readonly'> </td>"
-						+ "<td> <input type='text' name ='pw' value='" + pw + "'> </td>"
+						+ "<td> <input type='text' name ='pwd' value='" + pwd + "'> </td>"
 						+ "<td> <input type='text' name ='name' value='" + name + "'> </td>"
 						+ "<td> <input type='text' name ='email' value='" + email + "'> </td>"
 						+ "<td> " + joinDate + "</td>"
-						+ "<td> <input type='text' name ='grade' value='"+ grade + "'> </td>"
+						+ "<td> <input type='text' name ='custRank' value='"+ custRank + "'> </td>"
 						+ "<td> <button type='submit'> ���� </button> </td>"
 						+ "<td> <a href='/mini02/member3?command=del&id="+ id + "'> ���� </a> </td>"
 						+ "</tr> </form>" );
@@ -107,21 +107,21 @@ public class MemberServlet extends HttpServlet{
 	
 	public MemberVO getVO(HttpServletRequest request) {
 		String _id = request.getParameter("id");
-		String _pw = request.getParameter("pw");
+		String _pwd = request.getParameter("pwd");
 		String _name = request.getParameter("name");
 		String _email = request.getParameter("email");
-		String _grade = request.getParameter("grade");
+		String _custRank = request.getParameter("custRank");
 		
-		if(_grade == null) {
-			_grade = "0";
+		if(_custRank == null) {
+			_custRank = "0";
 		}
 		
 		MemberVO vo = new MemberVO();
 		vo.setID(_id);
-		vo.setPW(_pw);
+		vo.setPWD(_pwd);
 		vo.setName(_name);
 		vo.setEmail(_email);
-		vo.setGrade(_grade);
+		vo.setCustRank(_custRank);
 		
 		return vo;
 	}

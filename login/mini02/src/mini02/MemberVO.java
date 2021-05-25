@@ -3,12 +3,12 @@ package mini02;
 import java.sql.Date;
 
 public class MemberVO {
-	private String id, pw, name, email, grade;
-	public String getGrade() {
-		return grade;
+	private String id, pwd, name, email, custRank;
+	public String getCustRank() {
+		return custRank;
 	}
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setCustRank(String custRank) {
+		this.custRank = custRank;
 	}
 	private Date joinDate;
 	
@@ -18,11 +18,11 @@ public class MemberVO {
 	public void setID(String id) {
 		this.id = id;
 	}
-	public String getPW() {
-		return pw;
+	public String getPWD() {
+		return pwd;
 	}
-	public void setPW(String pw) {
-		this.pw = pw;
+	public void setPWD(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getName() {
 		return name;

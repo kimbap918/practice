@@ -30,11 +30,11 @@ private String ut = "utf-8";
 		String com = request.getParameter("command");
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
-		String id = "", pw = "";
+		String id = "", PWD = "";
 		
 		if(com != null && com.equals("login")) {
 			id = request.getParameter("id");
-			pw = request.getParameter("pw");
+			PWD = request.getParameter("pwd");
 			vo = dao.getMember(id);
 		}
 		
@@ -45,17 +45,17 @@ private String ut = "utf-8";
 			response.sendRedirect("/mini02/MemberList.jsp");//member3");
 		}else{
 			if(vo != null) {	
-				if(pw.equals(vo.getPW())) {
+				if(PWD.equals(vo.getPWD())) {
 					HttpSession session = request.getSession();
 					//session.setAttribute("user", vo);
 					session.setAttribute("id", vo.getID());
-					session.setAttribute("pw", vo.getPW());
+					session.setAttribute("pwd", vo.getPWD());
 					session.setAttribute("name", vo.getName());
 					session.setAttribute("email", vo.getEmail());
-					session.setAttribute("grade", vo.getGrade());
+					session.setAttribute("CustRank", vo.getCustRank());
 					response.sendRedirect("/mini02/MemInfo.jsp");
 				}else {
-					out.print("pw Ʋ��<br>");
+					out.print("PWD Ʋ��<br>");
 					out.print("<a href='/mini02/login.jsp'>"
 							+ "<input type='button' value='�α���ȭ��'></a>");
 				}

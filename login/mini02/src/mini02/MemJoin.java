@@ -33,15 +33,15 @@ public class MemJoin extends HttpServlet{
 		
 		if(com != null && com.equals("addMember")) {
 			String id = request.getParameter("id");
-			String pw = request.getParameter("pwd");
+			String pwd = request.getParameter("pwd");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
-			String grade = request.getParameter("grade");
+			String custRank = request.getParameter("custRank");
 			vo.setID(id);
-			vo.setPW(pw);
+			vo.setPWD(pwd);
 			vo.setName(name);
 			vo.setEmail(email);
-			vo.setGrade(grade);
+			vo.setCustRank(custRank);
 			dao.addMember(vo);
 		}else if(com != null && com.equals("delMember")) {
 			String id = request.getParameter("id");
@@ -58,7 +58,7 @@ public class MemJoin extends HttpServlet{
 		for(int i = 0; i < list.size(); i++) {
 			MemberVO membervo = list.get(i);
 			String id = membervo.getID();
-			String pwd = membervo.getPW();
+			String pwd = membervo.getPWD();
 			String name = membervo.getName();
 			String email = membervo.getEmail();
 			Date joinDate = membervo.getJoinDate();

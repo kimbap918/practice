@@ -39,16 +39,16 @@ public class MemberDAO {
 		ResultSet rs = null;
 		try {
 			con = dataFactory.getConnection();
-			String query = "select * FROM t_member WHERE id=?";
+			String query = "select * FROM shop_db.customer_manage WHERE id=?";
 			pst = con.prepareStatement(query);
 			pst.setString(1, ID);
 			rs = pst.executeQuery();
 			if(rs.next()) {
 				vo.setID(rs.getString("id"));
-				vo.setPW(rs.getString("pwd"));
+				vo.setPWD(rs.getString("pwd"));
 				vo.setName(rs.getString("name"));
 				vo.setEmail(rs.getString("email"));
-				vo.setGrade(rs.getString("grade"));
+				vo.setCustRank(rs.getString("custRank"));
 				
 			}else{
 				vo = null;
@@ -71,12 +71,12 @@ public class MemberDAO {
 		try{
 			con = dataFactory.getConnection();
 			String id =  memberVO.getID();
-			String pwd =  memberVO.getPW();
+			String pwd =  memberVO.getPWD();
 			String name =  memberVO.getName();
 			String email = memberVO.getEmail();
-			String grade = memberVO.getGrade();
+			String custRank = memberVO.getCustRank();
 			
-			String query = "insert into t_member";
+			String query = "insert into shop_db.customer_manage";
 			query += " (id, pwd, name, email, grade)";
 			query += " values(?, ?, ?, ?, ?)";
 			System.out.println("preapareStatement: " + query);
@@ -89,7 +89,7 @@ public class MemberDAO {
 			if(id.equals("admin")) {
 				pst.setString(5, "1");
 			} else {
-				pst.setString(5, grade);
+				pst.setString(5, custRank);
 			}
 			pst.executeUpdate();
 		
@@ -102,7 +102,7 @@ public class MemberDAO {
 	public void delMember(String id){
 		try{
 			con = dataFactory.getConnection();
-			String query = "delete from t_member" + " where id=?";
+			String query = "delete from shop_db.customer_manage" + " where id=?";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
 			pst.setString(1, id);
@@ -116,12 +116,12 @@ public class MemberDAO {
 	public void revMember(MemberVO vo){
 		try{
 											//pwd, name, email, id
-			String query = "update t_member set pwd=?, name=?, email=? where id=?";
+			String query = "update shop_db.customer_manage set pwd=?, name=?, email=? where id=?";
 			System.out.println("preapareStatement: " + query);
 			con = dataFactory.getConnection();
 			pst = con.prepareStatement(query);
 			
-			pst.setString(1, vo.getPW());
+			pst.setString(1, vo.getPWD());
 			pst.setString(2, vo.getName());
 			pst.setString(3, vo.getEmail());
 			pst.setString(4, vo.getID());
@@ -137,7 +137,7 @@ public class MemberDAO {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try{
 			con = dataFactory.getConnection();
-			String query = "select * from t_member";
+			String query = "select * from shop_db.customer_manage";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
 			ResultSet rs = pst.executeQuery(query);
@@ -147,15 +147,15 @@ public class MemberDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				Date joinDate = rs.getDate("joinDate");
-				String grade = rs.getString("grade");
+				String custRank = rs.getString("custRank");
 				
 				MemberVO vo = new MemberVO();
 				vo.setID(id);
-				vo.setPW(pwd);
+				vo.setPWD(pwd);
 				vo.setName(name);
 				vo.setEmail(email);
 				vo.setJoinDate(joinDate);
-				vo.setGrade(grade);
+				vo.setCustRank(custRank);
 				
 				list.add(vo);
 			}
@@ -172,7 +172,7 @@ public class MemberDAO {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try{
 			con = dataFactory.getConnection();
-			String query = "select * from t_member ORDER BY x=?";
+			String query = "select * from shop_db.customer_manage ORDER BY x=?";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
 			pst.setString(1, x);
@@ -183,15 +183,15 @@ public class MemberDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				Date joinDate = rs.getDate("joinDate");
-				String grade = rs.getString("grade");
+				String custRank = rs.getString("custRank");
 				
 				MemberVO vo = new MemberVO();
 				vo.setID(id);
-				vo.setPW(pwd);
+				vo.setPWD(pwd);
 				vo.setName(name);
 				vo.setEmail(email);
 				vo.setJoinDate(joinDate);
-				vo.setGrade(grade);
+				vo.setCustRank(custRank);
 				
 				list.add(vo);
 			}
