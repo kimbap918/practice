@@ -57,28 +57,28 @@
     String userid = request.getParameter("id");
     
     String name = null;
-    String pw = null;
+    String pwd = null;
     String email = null;
-    String grade = null;
+    String custRank = null;
     
     String username = null;
-    String userpw = null;
+    String userpwd = null;
     String useremail = null;
-    String usergrade = null;
+    String usercustRank = null;
     
     if(id != null){
 	    name = (String)session.getAttribute("name");
-	    pw = (String)session.getAttribute("pw");
+	    pwd = (String)session.getAttribute("pwd");
 	    email = (String)session.getAttribute("email");
-	    grade = (String)session.getAttribute("grade");
+	    custRank = (String)session.getAttribute("custRank");
 	    //out.println("name : " + name);
 	    
 	    if(id.equals("admin")){
 	    	userid = request.getParameter("id");
 	        username = request.getParameter("name");
-	        userpw = request.getParameter("pw");
+	        userpwd = request.getParameter("pwd");
 	        useremail = request.getParameter("email");
-	        usergrade = request.getParameter("grade");
+	        usercustRank = request.getParameter("custRank");
 	          
 	    }%> 
 	    <div id = "login">
@@ -94,12 +94,12 @@
 	   		<tr><td>column</td><td>info</td></tr>
 	   		<%if(id.equals("admin")){ %>
 		   		<tr><td>ID : </td><td><input type="text" name="id" value="<%=userid%>" readonly="readonly"></td></tr>
-		   		<tr><td>PW : </td><td><input type="password" name ="pw" value="<%=userpw%>"></td></tr>
+		   		<tr><td>PW : </td><td><input type="password" name ="pwd" value="<%=userpwd%>"></td></tr>
 		   		<tr><td>이름 : </td><td><input type="text" name ="name" value="<%=username%>"></td></tr>
 		   		<tr><td>email : </td><td><input type="email" name ="email" value="<%=useremail%>"></td></tr>
 	   		<%}else{ %>
 		   		<tr><td>ID : </td><td><input type="text" name="id" value="<%=id%>" readonly="readonly"></td></tr>
-		   		<tr><td>PW : </td><td><input type="password" name ="pw" value="<%=pw%>"></td></tr>
+		   		<tr><td>PW : </td><td><input type="password" name ="pwd" value="<%=pwd%>"></td></tr>
 		   		<tr><td>이름 : </td><td><input type="text" name ="name" value="<%=name%>"></td></tr>
 		   		<tr><td>email : </td><td><input type="email" name ="email" value="<%=email%>"></td></tr>
 	   		<%} %>   	

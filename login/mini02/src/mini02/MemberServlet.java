@@ -72,9 +72,9 @@ public class MemberServlet extends HttpServlet{
 			out.print("<html><body>");
 			out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
 			out.print("<h1>�� ������ �ϲ���. ");
-			out.print("<a href='http://localhost:8090/mini02/login.jsp'>"+ 
+			out.print("<a href='http://localhost:8080/mini02/login.jsp'>"+ 
 		     "<input type='button' value='�α׾ƿ�' ></a> </h1>");
-			out.print("<td>���̵�</td><td>��й�ȣ</td><td>�̸�</td><td>�̸���</td><td>������</td><td>���</td><td>����</td><td>����</td><tr>");
+			out.print("<td>ID</td><td>PWD</td><td>이름</td><td>EMAIL</td><td>유저등급</td></tr>");
 			
 			for(int i = 0; i < list.size(); i++){
 				MemberVO memberVO = (MemberVO) list.get(i);

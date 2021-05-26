@@ -34,11 +34,11 @@
 		for (int i = 0; i < list.size(); i++) {
 			MemberVO mvo = (MemberVO) list.get(i);
 			String id = mvo.getID();
-			String pw = mvo.getPW();
+			String pwd = mvo.getPWD();
 			String name = mvo.getName();
 			String email = mvo.getEmail();
 			Date joinDate = mvo.getJoinDate();
-			String grade = mvo.getGrade();
+			String custRank = mvo.getCustRank();
 
 			session.setAttribute("id", mvo.getID());
 			session.setAttribute("name", mvo.getName());
@@ -47,14 +47,14 @@
 			<tr>
 				<td><input type="text" name="id" value="<%=id%>"
 					readonly="readonly"></td>
-				<td><input type="text" name="pw" value="<%=pw%>"
+				<td><input type="text" name="pwd" value="<%=pwd%>"
 					readonly="readonly"></td>
 				<td><input type="text" name="name" value="<%=name%>"
 					readonly="readonly"></td>
 				<td><input type="text" name="email" value="<%=email%>"
 					readonly="readonly"></td>
 				<td><%=joinDate%></td>
-				<td><input type="text" name="grade" value="<%=grade%>"
+				<td><input type="text" name="custRank" value="<%=custRank%>"
 					readonly="readonly"></td>
 				<td>
 					<button type="submit">수정</button> <input type="hidden"

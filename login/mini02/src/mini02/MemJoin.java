@@ -47,11 +47,11 @@ public class MemJoin extends HttpServlet{
 			String id = request.getParameter("id");
 			dao.delMember(id);
 		}
-		out.print("<a href='http://localhost:8090/mini02/login.html'>");
+		out.print("<a href='http://localhost:8080/mini02/login.html'>");
 		
 		out.print("<html><body>");
 		out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
-		out.print("<td>���̵�</td><td>��й�ȣ</td><td>�̸�</td><td>�̸���</td><td>������</td></tr>");
+		out.print("<td>ID</td><td>PWD</td><td>이름</td><td>EMAIL</td><td>가입일</td></tr>");
 		
 		List<MemberVO> list = dao.listMembers();
 		
@@ -66,7 +66,7 @@ public class MemJoin extends HttpServlet{
 			out.print("<tr><td>" + id + "</td><td>" + pwd + "</td><td>" + name 
 					+ "</td><td>"  + email + "</td><td>"  + joinDate + "</td><tr>" );
 		} //for
-		out.print("<a href='http://localhost:8090/mini02/login.html'>"+
+		out.print("<a href='http://localhost:8080/mini02/login.html'>"+
 		"<input type='button' value='�α���ȭ��'>");
 		out.print("</table></body></html>");
 		 /**/
