@@ -17,13 +17,13 @@
     	function fn_change() {
     		var frinfo = document.frinfo;
 			var id = frinfo.id.value;
-			var pwd = frinfo.pwd.value;
+			var pw = frinfo.pw.value;
 			var name = frinfo.name.value;
-			var email = frinfo.pwd.value;
+			var email = frinfo.pw.value;
 			
 			if(name.length == 0 || name == ""){
 				alert("name 필수");
-			}else if(pwd.length == 0 || pwd == ""){
+			}else if(pw.length == 0 || pw == ""){
 				alert("pw 필수");
 			}else if(email.length == 0 || email == ""){
 				alert("email 필수");

@@ -64,7 +64,7 @@ public class MemberServlet extends HttpServlet{
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("email", vo.getEmail());
 			session.setAttribute("custRank", vo.getCustRank());
-			response.sendRedirect("/mini02/login.jsp");
+			response.sendRedirect("/mini02/login.jsp");//������ �̵�
 		}
 		
 		if(userid != null && userid.equals("admin")) {

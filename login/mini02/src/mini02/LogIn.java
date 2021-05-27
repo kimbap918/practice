@@ -52,7 +52,7 @@ private String ut = "utf-8";
 					session.setAttribute("pwd", vo.getPWD());
 					session.setAttribute("name", vo.getName());
 					session.setAttribute("email", vo.getEmail());
-					session.setAttribute("custRank", vo.getCustRank());
+					session.setAttribute("CustRank", vo.getCustRank());
 					response.sendRedirect("/mini02/MemInfo.jsp");
 				}else {
 					out.print("PWD Ʋ��<br>");
