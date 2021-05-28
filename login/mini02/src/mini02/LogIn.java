@@ -55,14 +55,14 @@ private String ut = "utf-8";
 					session.setAttribute("custRank", vo.getCustRank());
 					response.sendRedirect("/mini02/MemInfo.jsp");
 				}else {
-					out.print("PWD Ʋ��<br>");
+					out.print("PWD<br>");
 					out.print("<a href='/mini02/login.jsp'>"
-							+ "<input type='button' value='�α���ȭ��'></a>");
+							+ "<input type='button' value='submit'></a>");
 				}
 			}else {
-				out.print("id ����<br>");
+				out.print("id<br>");
 				out.print("<a href='/mini02/login.jsp'>"
-						+ "<input type='button' value='�α���ȭ��'></a>");
+						+ "<input type='button' value='submit'></a>");
 			}
 		}
 	}

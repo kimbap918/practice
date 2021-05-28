@@ -2,6 +2,7 @@ package mini02;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.sql.DataSource;
 
 
 public class MemberDAO {
+	
 	private Connection con;
 	private PreparedStatement pst;
 	private DataSource dataFactory;
@@ -20,6 +22,12 @@ public class MemberDAO {
 	
 	public MemberDAO() {
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String url = "jdbc:mysql://choicho.mysql.database.azure.com:3306/?autoReconnect=true&amp;serverTimezone=UTC";
+		    String username = "choi_admin@choicho";
+		    String password = "jun901800!";
+			con = DriverManager.getConnection(url, username, password);
+			
 			Context ctx = new InitialContext();
             //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
 			Context evnCtx = (Context)ctx.lookup("java:/comp/env");
