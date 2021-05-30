@@ -22,26 +22,36 @@ public class MemberDAO {
 	
 	public MemberDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			// 1. mysql DB 연결 관련 정보
 			String url = "jdbc:mysql://choicho.mysql.database.azure.com:3306/?autoReconnect=true&amp;serverTimezone=UTC";
 		    String username = "choi_admin@choicho";
 		    String password = "jun901800!";
+		    String driver = "org.gjt.mm.mysql.Driver";
+			
+		    // 2. 드라이버 로딩
+			Class.forName(driver);
+			
+			// 3. mysql 서버 연결
 			con = DriverManager.getConnection(url, username, password);
+
 			
 			Context ctx = new InitialContext();
             //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
 			Context evnCtx = (Context)ctx.lookup("java:/comp/env");
             //envCtx의 lookup메서드를 이용해서 "jdbc/orcl"에 해당하는 객체를 찾아서 dataFactory에 삽입
 			dataFactory = (DataSource)evnCtx.lookup("jdbc/mysql");
+			
+		    
 		}catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("연동실패 : " + e);
 		}
 	}
-	 /*
-     Context context = new InitialContext();
-     DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
-     Connection con = dataSource.getConnection(); 
-     */
+	 
+	/*Context context = new InitialContext();
+    DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
+    Connection con = dataSource.getConnection(); */
+   
 	public MemberVO getMember(String ID) {
 		MemberVO vo = new MemberVO();
 		ResultSet rs = null;
@@ -212,3 +222,4 @@ public class MemberDAO {
 		return list;
 	}
 }
+

@@ -10,8 +10,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/AdoptOpenJDK 11 [11.0.8]">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/mac/Desktop/ExampleProjectB-FINAL/WEB-INF/lib/mysql-connector-java-8.0.21.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
