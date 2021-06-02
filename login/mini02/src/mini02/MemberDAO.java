@@ -2,7 +2,6 @@ package mini02;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -13,15 +12,22 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
+
 public class MemberDAO {
 	
-	private Connection con = null;
+	private Connection con;
 	private PreparedStatement pst;
-	private DataSource dataFactory = null;
+	private DataSource dataFactory;
 	ResultSet rs;
 	
 	public MemberDAO() {
 		try {
+			
+			Context ctx = new InitialContext();
+            //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
+			Context envCtx = (Context)ctx.lookup("java:/comp/env/");
+            //envCtx의 lookup메서드를 이용해서 "jdbc/mysql"에 해당하는 객체를 찾아서 dataFactory에 삽입
+			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");	
 			
 			// 1. mysql DB 연결 관련 정보
 			/*String url = "jdbc:mysql://choicho.mysql.database.azure.com:3306/?autoReconnect=true&amp;serverTimezone=UTC";
@@ -37,21 +43,10 @@ public class MemberDAO {
 
 			*/
 			
-			Context ctx = new InitialContext();
-            //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
-			Context envCtx = (Context)ctx.lookup("java:/comp/env/");
-            //envCtx의 lookup메서드를 이용해서 "jdbc/orcl"에 해당하는 객체를 찾아서 dataFactory에 삽입
-			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");
-			con = dataFactory.getConnection();
-
 		}catch (Exception e) {
-			System.out.println("연동실패 : " + e);
+			e.printStackTrace();
 		}
 	}
-	 
-	//Context context = new InitialContext();
-    //DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
-	//Connection con = dataFactory.getConnection();
 
    
 	public MemberVO getMember(String ID) {

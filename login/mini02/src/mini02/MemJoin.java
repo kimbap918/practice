@@ -67,7 +67,7 @@ public class MemJoin extends HttpServlet{
 					+ "</td><td>"  + email + "</td><td>"  + joinDate + "</td><tr>" );
 		} //for
 		out.print("<a href='http://localhost:8080/mini02/login.html'>"+
-		"<input type='button' value='�α���ȭ��'>");
+		"<input type='button' value='로그인'>");
 		out.print("</table></body></html>");
 		 /**/
 	}

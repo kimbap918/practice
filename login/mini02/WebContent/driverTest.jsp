@@ -9,14 +9,13 @@
 
   try{
 	 String driverClassName="com.mysql.cj.jdbc.Driver";
-	 String url = "jdbc:mysql://choicho.mysql.database.azure.com:3306/?autoReconnect=true&amp;serverTimezone=UTC";
-     String username = "choi_admin@choicho";
+	 String url = "jdbc:mysql://database-1.cu5eqyqkc3ar.us-east-2.rds.amazonaws.com:3306/database-1?autoReconnect=true&amp;serverTimezone=UTC";
+     String username = "choicho";
      String password = "jun901800!";
 	
 	 Class.forName(driverClassName);
 	 Connection con = DriverManager.getConnection(url, username, password);
 	 out.println("제대로 연결되었습니다.");
   }catch(Exception e){ 
-	 e.printStackTrace();
-  }
+	 out.println("연결되지 않았습니다.");  }
 %>

@@ -46,7 +46,7 @@ public class MemberServlet extends HttpServlet{
 		if (command != null && command.equals("addMember")){
 			MemberVO vo = getVO(request);
 			dao.addMember(vo);			
-			response.sendRedirect("/mini02/login.jsp");//������ �̵�
+			response.sendRedirect("/mini02/login.jsp");
 		}else if(command != null && command.equals("del")){
 			String id = request.getParameter("id");
 			dao.delMember(id);
@@ -71,7 +71,7 @@ public class MemberServlet extends HttpServlet{
 			List<MemberVO> list = dao.listMembers();
 			out.print("<html><body>");
 			out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
-			out.print("<h1>�� ������ �ϲ���. ");
+			out.print("<h1>관리자 페이지입니다. ");
 			out.print("<a href='http://localhost:8080/mini02/login.jsp'>"+ 
 		     "<input type='button' value='submit' ></a> </h1>");
 			out.print("<td>ID</td><td>PWD</td><td>이름</td><td>EMAIL</td><td>유저등급</td></tr>");
