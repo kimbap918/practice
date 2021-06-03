@@ -19,7 +19,7 @@
 			var id = frinfo.id.value;
 			var pwd = frinfo.pwd.value;
 			var name = frinfo.name.value;
-			var email = frinfo.pwd.value;
+			var email = frinfo.email.value;
 			
 			if(name.length == 0 || name == ""){
 				alert("name 필수");

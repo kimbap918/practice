@@ -42,7 +42,7 @@ private String ut = "utf-8";
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			vo = dao.getMember(id);
-			response.sendRedirect("/mini02/MemberList.jsp");//member3");
+			response.sendRedirect("/mini02/MemberList.jsp");
 		}else{
 			if(vo != null) {	
 				if(PWD.equals(vo.getPWD())) {

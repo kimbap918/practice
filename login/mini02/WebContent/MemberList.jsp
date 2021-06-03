@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>
-		난 관리자 일꺼야. <a href="/mini02/login.jsp"> <input type="button"
+		관리자 페이지입니다. <a href="/mini02/login.jsp"> <input type="button"
 			value="로그아웃">
 		</a>
 	</h1>

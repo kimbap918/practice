@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+		<resource name="jdbc/mysql"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		auth="Container"
+		type="javax.sql.DateSource"
+		url="jdbc:mysql://database-1.cu5eqyqkc3ar.us-east-2.rds.amazonaws.com:3306/?autoReconnect=true&amp;serverTimezone=UTC"
+		username="choicho"
+		password="jun901800!"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+		loginTimeout="10"
+		maxActive="20"
+		minIdle="5"
+		maxWait="3000"
+		testOnBorrow="true"
+		/>
+</Context>

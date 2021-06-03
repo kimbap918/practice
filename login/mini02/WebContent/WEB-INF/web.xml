@@ -10,6 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <resource-ref>
+  <!-- JNDI Setting -->
      <description>DB connection</description>
      <res-ref-name>jdbc/mysql</res-ref-name>
      <res-type>javax.sql.DataSource</res-type>

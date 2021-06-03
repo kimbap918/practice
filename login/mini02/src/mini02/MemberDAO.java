@@ -23,11 +23,18 @@ public class MemberDAO {
 	public MemberDAO() {
 		try {
 			
+			Context context = new InitialContext();
+			Context envCtx = (Context)context.lookup("java:/comp/env");
+			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");
+			con = dataFactory.getConnection();
+			
+			/* Connection pool
 			Context ctx = new InitialContext();
             //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
 			Context envCtx = (Context)ctx.lookup("java:/comp/env/");
             //envCtx의 lookup메서드를 이용해서 "jdbc/mysql"에 해당하는 객체를 찾아서 dataFactory에 삽입
-			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");	
+			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");	*/
+			
 			
 			// 1. mysql DB 연결 관련 정보
 			/*String url = "jdbc:mysql://choicho.mysql.database.azure.com:3306/?autoReconnect=true&amp;serverTimezone=UTC";
@@ -130,7 +137,6 @@ public class MemberDAO {
 	
 	public void revMember(MemberVO vo){
 		try{
-											//pwd, name, email, id
 			String query = "update shop_db.customer_manage set pwd=?, name=?, email=? where id=?";
 			System.out.println("preapareStatement: " + query);
 			con = dataFactory.getConnection();
