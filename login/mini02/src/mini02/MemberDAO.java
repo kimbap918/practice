@@ -17,23 +17,25 @@ public class MemberDAO {
 	
 	private Connection con;
 	private PreparedStatement pst;
-	private DataSource dataFactory;
+	private DataSource ds;
 	ResultSet rs;
 	
 	public MemberDAO() {
 		try {
+			Context init = new InitialContext();
+			ds = (DataSource)init.lookup("java:comp/env/jdbc/my");
 			
-			Context context = new InitialContext();
-			Context envCtx = (Context)context.lookup("java:/comp/env");
-			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");
-			con = dataFactory.getConnection();
+			/*Context context = new InitialContext();
+			Context envCtx = (Context)context.lookup("java:comp/env/");
+			ds = (DataSource)envCtx.lookup("jdbc/mysql");
+			con = ds.getConnection();*/
 			
 			/* Connection pool
 			Context ctx = new InitialContext();
             //ctx의 lookup메서드를 이용해서 "java:comp/env" 에 해당하는 객체를 찾아서 evnCtx에 삽입
-			Context envCtx = (Context)ctx.lookup("java:/comp/env/");
-            //envCtx의 lookup메서드를 이용해서 "jdbc/mysql"에 해당하는 객체를 찾아서 dataFactory에 삽입
-			dataFactory = (DataSource)envCtx.lookup("jdbc/mysql");	*/
+			Context envCtx = (Context)ctx.lookup("java:comp/env/");
+            //envCtx의 lookup메서드를 이용해서 "jdbc/mysql"에 해당하는 객체를 찾아서 ds에 삽입
+			ds = (DataSource)envCtx.lookup("jdbc/mysql");	*/
 			
 			
 			// 1. mysql DB 연결 관련 정보
@@ -53,14 +55,14 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 
    
 	public MemberVO getMember(String ID) {
 		MemberVO vo = new MemberVO();
 		ResultSet rs = null;
 		try {
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			String query = "select * FROM shop_db.customer_manage WHERE id=?";
 			pst = con.prepareStatement(query);
 			pst.setString(1, ID);
@@ -91,7 +93,7 @@ public class MemberDAO {
 	
 	public void addMember(MemberVO memberVO){
 		try{
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			String id =  memberVO.getID();
 			String pwd =  memberVO.getPWD();
 			String name =  memberVO.getName();
@@ -123,7 +125,7 @@ public class MemberDAO {
 	
 	public void delMember(String id){
 		try{
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			String query = "delete from shop_db.customer_manage" + " where id=?";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
@@ -139,7 +141,7 @@ public class MemberDAO {
 		try{
 			String query = "update shop_db.customer_manage set pwd=?, name=?, email=? where id=?";
 			System.out.println("preapareStatement: " + query);
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			pst = con.prepareStatement(query);
 			
 			pst.setString(1, vo.getPWD());
@@ -157,7 +159,7 @@ public class MemberDAO {
 	public List<MemberVO> listMembers(){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try{
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			String query = "select * from shop_db.customer_manage";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
@@ -192,7 +194,7 @@ public class MemberDAO {
 	public List<MemberVO> listMember(String x){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try{
-			con = dataFactory.getConnection();
+			con = ds.getConnection();
 			String query = "select * from shop_db.customer_manage ORDER BY x=?";
 			System.out.println("preapareStatement: " + query);
 			pst = con.prepareStatement(query);
