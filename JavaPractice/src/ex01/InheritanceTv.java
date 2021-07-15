@@ -1,6 +1,6 @@
 package ex01;
 
-class Tv {
+class Tv2 {
 	boolean power;
 	int channel;
 	
@@ -9,7 +9,7 @@ class Tv {
 	void channelDown() { --channel; }
 }
 
-class CaptionTv extends Tv {
+class CaptionTv extends Tv2 {
 	boolean caption;
 	void displayCaption(String text) {
 		if(caption) {
@@ -20,7 +20,7 @@ class CaptionTv extends Tv {
 
 public class InheritanceTv {
 	public static void main(String[] args) {
-		CationTv ctv = new CaptionTv();
+		CaptionTv ctv = new CaptionTv();
 		ctv.channel = 10;
 		ctv.channelUp();
 		System.out.println(ctv.channel);
